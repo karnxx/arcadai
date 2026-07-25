@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://djr3dehlxo54b"]
+
+[ext_resource type="Texture2D" uid="uid://8quyt4t5wnjh" path="res://icon.svg" id="1_4oo78"]
+
+[sub_resource type="Curve" id="Curve_8g5d8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1x3kl"]
+curve = SubResource("Curve_8g5d8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifeun"]
+particle_flag_disable_z = true
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_1x3kl")
+
+[node name="sword particles" type="GPUParticles2D" unique_id=439086122]
+emitting = false
+amount = 20
+texture = ExtResource("1_4oo78")
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ifeun")

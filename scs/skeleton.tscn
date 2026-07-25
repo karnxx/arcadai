@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cdgvsrqwv0en1"]
+
+[ext_resource type="Texture2D" uid="uid://sd1a4bfyhrtg" path="res://asserts/enemies.png" id="1_1dvdt"]
+[ext_resource type="Script" uid="uid://cbm5hq68cn5v0" path="res://scs/skeleton.gd" id="1_1t5x3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t5x3"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(0, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cdq2"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(16, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6e4k"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(32, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fculh"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(48, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srv0d"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(64, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cclrt"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(80, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgyrq"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(96, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpg0t"]
+atlas = ExtResource("1_1dvdt")
+region = Rect2(112, 72, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifeun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t5x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cdq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6e4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fculh")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srv0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cclrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgyrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpg0t")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifeun"]
+size = Vector2(12, 17)
+
+[node name="skeleton" type="CharacterBody2D" unique_id=2058992676 groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_1t5x3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2134636417]
+sprite_frames = SubResource("SpriteFrames_ifeun")
+animation = &"idle"
+frame_progress = 0.09036863
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593458231]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_ifeun")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1331668266]
+target_position = Vector2(0, 12)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1418531745]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1777804037]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_ifeun")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2116643887]
+custom_maximum_size = Vector2(100, 10)
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 34.0
+offset_bottom = -17.0
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

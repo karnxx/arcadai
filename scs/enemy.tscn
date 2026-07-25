@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://doihmb703oblo"]
+
+[ext_resource type="Script" uid="uid://dovok5u48rv8w" path="res://scs/enemy.gd" id="1_epalm"]
+[ext_resource type="Texture2D" uid="uid://sd1a4bfyhrtg" path="res://asserts/enemies.png" id="2_x7xo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x3kl"]
+size = Vector2(14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkyvt"]
+atlas = ExtResource("2_x7xo1")
+region = Rect2(0, 96, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt27n"]
+atlas = ExtResource("2_x7xo1")
+region = Rect2(16, 96, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jfey"]
+atlas = ExtResource("2_x7xo1")
+region = Rect2(32, 96, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd188"]
+atlas = ExtResource("2_x7xo1")
+region = Rect2(48, 96, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifeun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkyvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt27n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jfey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd188")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifeun"]
+size = Vector2(30, 28)
+
+[node name="enemy" type="CharacterBody2D" unique_id=209086398 groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_epalm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370607394]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_1x3kl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=248325060]
+sprite_frames = SubResource("SpriteFrames_ifeun")
+animation = &"walk"
+frame_progress = 0.23806383
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2062274853]
+target_position = Vector2(0, 13)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=520430440]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1193603121]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ifeun")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2077638980]
+custom_maximum_size = Vector2(100, 10)
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 34.0
+offset_bottom = -17.0
+show_percentage = false

@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://c5dk0tfahi5ob"]
+
+[ext_resource type="Texture2D" uid="uid://dbg8kmrqxa23h" path="res://asserts/heroes.png" id="1_siv83"]
+[ext_resource type="Script" uid="uid://cimcwj541i0sw" path="res://scs/knightplr.gd" id="1_vcc2w"]
+[ext_resource type="Script" uid="uid://dmcy5ainqvtsw" path="res://scs/pivot.gd" id="3_sl4cf"]
+[ext_resource type="Texture2D" uid="uid://llxnnimb520m" path="res://asserts/weapons/weapon_regular_sword.png" id="4_kk0ps"]
+[ext_resource type="PackedScene" uid="uid://djr3dehlxo54b" path="res://scs/sword_particles.tscn" id="5_kk0ps"]
+[ext_resource type="Texture2D" uid="uid://dyprqqwp16lyw" path="res://asserts/str.png" id="6_adl4y"]
+[ext_resource type="Texture2D" uid="uid://v1yx1pk47arw" path="res://asserts/dex.png" id="7_mvgkj"]
+[ext_resource type="Texture2D" uid="uid://c30vsxv0lpy43" path="res://asserts/intl.png" id="8_d3k8s"]
+[ext_resource type="Texture2D" uid="uid://d0l6uf88745wf" path="res://asserts/strbg.png" id="9_hcvct"]
+[ext_resource type="Texture2D" uid="uid://bvxhiajybu3pp" path="res://asserts/dexbg.png" id="10_sgf5q"]
+[ext_resource type="Texture2D" uid="uid://dqrdwi6svp8ka" path="res://asserts/intlbg.png" id="11_oc3w7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd84e"]
+size = Vector2(12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyvwh"]
+atlas = ExtResource("1_siv83")
+region = Rect2(128, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd84e"]
+atlas = ExtResource("1_siv83")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2vbq"]
+atlas = ExtResource("1_siv83")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsvpy"]
+atlas = ExtResource("1_siv83")
+region = Rect2(32, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1na5"]
+atlas = ExtResource("1_siv83")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghvdi"]
+atlas = ExtResource("1_siv83")
+region = Rect2(64, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mk5o"]
+atlas = ExtResource("1_siv83")
+region = Rect2(80, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vi8u"]
+atlas = ExtResource("1_siv83")
+region = Rect2(96, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84oqh"]
+atlas = ExtResource("1_siv83")
+region = Rect2(112, 64, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifeun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyvwh")
+}],
+"loop": 1,
+"name": &"dodge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd84e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2vbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsvpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1na5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghvdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mk5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vi8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84oqh")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifeun"]
+size = Vector2(10, 20)
+
+[node name="knight" type="CharacterBody2D" unique_id=88404632 groups=["plr"]]
+script = ExtResource("1_vcc2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232551730]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_nd84e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=65629483]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_ifeun")
+animation = &"run"
+frame_progress = 0.109162584
+
+[node name="pivot" type="Node2D" parent="." unique_id=205933734]
+position = Vector2(0, -3)
+script = ExtResource("3_sl4cf")
+
+[node name="Sprite2D" type="Sprite2D" parent="pivot" unique_id=327137343]
+position = Vector2(25, 0)
+rotation = 1.5707964
+texture = ExtResource("4_kk0ps")
+
+[node name="area" type="Area2D" parent="pivot/Sprite2D" unique_id=1245176733]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/Sprite2D/area" unique_id=50410639]
+shape = SubResource("RectangleShape2D_ifeun")
+
+[node name="sword particles" parent="pivot" unique_id=439086122 instance=ExtResource("5_kk0ps")]
+scale = Vector2(0.1, 0.1)
+
+[node name="camcam" type="Camera2D" parent="." unique_id=658014468]
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1247938531]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=825254953]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control" unique_id=1081375282]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 238.0
+offset_right = 40.0
+offset_bottom = 270.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("6_adl4y")
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Control" unique_id=2025910216]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 288.0
+offset_right = 40.0
+offset_bottom = 320.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 0
+texture_normal = ExtResource("7_mvgkj")
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/Control" unique_id=903703605]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 378.0
+offset_right = 40.0
+offset_bottom = 410.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("8_d3k8s")
+
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=1254915877]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1107.0
+offset_top = 227.0
+offset_right = 1147.0
+offset_bottom = 341.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control2" unique_id=1050492024]
+layout_mode = 0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 30.0
+texture = ExtResource("9_hcvct")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2/TextureRect" unique_id=927701841]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 30.0
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control2" unique_id=1954569962]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 76.0
+texture = ExtResource("10_sgf5q")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control2/TextureRect2" unique_id=940818763]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 30.0
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control2" unique_id=1062012391]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 40.0
+offset_bottom = 121.0
+texture = ExtResource("11_oc3w7")
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control2/TextureRect3" unique_id=608688552]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 41.0
+offset_bottom = 31.0
+text = "2"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="pivot/Sprite2D/area" to="." method="_on_area_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/TextureButton3" to="." method="_on_texture_button_3_pressed"]

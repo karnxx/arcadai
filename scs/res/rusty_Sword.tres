@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://dwj07pf2q26h5"]
+
+[ext_resource type="Script" uid="uid://cjwxwv15a41lv" path="res://scs/weapon.gd" id="1_s3i6p"]
+[ext_resource type="Texture2D" uid="uid://pvae0ynls0sx" path="res://asserts/weapons/weapon_rusty_sword.png" id="2_cbs6b"]
+
+[resource]
+script = ExtResource("1_s3i6p")
+texture = ExtResource("2_cbs6b")
+range = 25
+dmg = 5
+type = 0
+area = Vector2(10, 20)
+str = 4
+dex = 4
+intl = 6
+metadata/_custom_type_script = "uid://cjwxwv15a41lv"
