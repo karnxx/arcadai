@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 80
-var hp = 100
+var hp = 40
 var dmg = 5
 var xp_reward = 2
 var dirara := Vector2.ZERO

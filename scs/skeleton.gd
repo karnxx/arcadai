@@ -3,7 +3,7 @@ var plr
 var fire_cooldown := 2.0
 var timer := 0.0
 
-var hp = 200
+var hp = 50
 
 var dirara
 var stopped := false

@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://c5dk0tfahi5ob" path="res://scs/knightplr.tscn" id="5_jfdyt"]
 [ext_resource type="PackedScene" uid="uid://b0vqi7rcoe1fl" path="res://scs/chest.tscn" id="6_0uh16"]
 [ext_resource type="Resource" uid="uid://dwj07pf2q26h5" path="res://scs/res/rusty_Sword.tres" id="7_i2r82"]
+[ext_resource type="PackedScene" uid="uid://no3sque7faon" path="res://scs/node_2d.tscn" id="8_yu70d"]
+[ext_resource type="PackedScene" uid="uid://cdsljrtfmbbla" path="res://scs/key.tscn" id="11_afs87"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flxqx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afs87"]
 texture = ExtResource("1_joikx")
 0:0/0 = 0
 1:0/0 = 0
@@ -159,7 +161,7 @@ texture = ExtResource("1_joikx")
 22:7/0 = 0
 23:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0uh16"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ldrg"]
 texture = ExtResource("2_d38sr")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -294,7 +296,7 @@ texture = ExtResource("2_d38sr")
 4:6/0 = 0
 5:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2r82"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ldpg"]
 texture = ExtResource("3_jfdyt")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.057598, -8, 3.1472912, -8, 2.9442415, 8, -3.1472912, 8)
@@ -396,9 +398,9 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "floor"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_flxqx")
-sources/1 = SubResource("TileSetAtlasSource_0uh16")
-sources/2 = SubResource("TileSetAtlasSource_i2r82")
+sources/0 = SubResource("TileSetAtlasSource_afs87")
+sources/1 = SubResource("TileSetAtlasSource_5ldrg")
+sources/2 = SubResource("TileSetAtlasSource_2ldpg")
 
 [node name="lvl1" type="Node2D" unique_id=1886757325]
 script = ExtResource("1_1fm8o")
@@ -421,6 +423,7 @@ layer_1/tile_data = PackedInt32Array(262143, 655362, 0, 196608, 655362, 0, 19660
 
 [node name="door" parent="." unique_id=943914350 instance=ExtResource("4_d38sr")]
 position = Vector2(-111, -593)
+lvl = ExtResource("8_yu70d")
 
 [node name="spawn" type="Node2D" parent="." unique_id=1720862822]
 
@@ -472,3 +475,7 @@ position = Vector2(117, -211)
 [node name="chest" parent="." unique_id=532406547 instance=ExtResource("6_0uh16")]
 position = Vector2(-156, -320)
 rewardweapon = ExtResource("7_i2r82")
+
+[node name="key" parent="." unique_id=1786790111 node_paths=PackedStringArray("door") instance=ExtResource("11_afs87")]
+position = Vector2(536, -324)
+door = NodePath("../door")
